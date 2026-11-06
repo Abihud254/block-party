@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#101522" />
+    <title>Block Party</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">▦</div>
+          <div>
+            <p class="eyebrow">A falling-block arcade game</p>
+            <h1>Block Party</h1>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="pauseBtn" class="secondary-button" type="button">Pause</button>
+          <button id="restartBtn" class="restart-button" type="button">
+            <span aria-hidden="true">↻</span> New game
+          </button>
+        </div>
+      </header>
+
+      <section class="scoreboard" aria-label="Game statistics">
+        <div class="score-card">
+          <span class="stat-label">Score</span>
+          <strong id="scoreDisplay" aria-live="polite">0</strong>
+        </div>
+        <div class="score-card">
+          <span class="stat-label">Best</span>
+          <strong id="bestDisplay">0</strong>
+        </div>
+        <div class="score-card">
+          <span class="stat-label">Lines</span>
+          <strong id="linesDisplay">0</strong>
+        </div>
+      </section>
+
+      <section class="game-layout" aria-label="Falling block game">
+        <div class="board-panel">
+          <div id="gameMessage" class="game-message" role="status">Use the controls to move and rotate the falling block.</div>
+          <div id="board" class="board" role="grid" aria-label="10 columns by 20 rows"></div>
+        </div>
+        <aside class="side-panel">
+          <section class="settings-card" aria-labelledby="speedTitle">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Make it your pace</p>
+                <h2 id="speedTitle">Drop speed</h2>
+              </div>
+              <output id="speedValue" for="speedSlider">5</output>
+            </div>
+            <input id="speedSlider" type="range" min="1" max="10" value="5" aria-label="Drop speed" />
+            <div class="speed-labels"><span>Slow</span><span id="intervalDisplay">600 ms / row</span><span>Fast</span></div>
+          </section>
+
+          <section class="next-card" aria-labelledby="nextTitle">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Coming up</p>
+                <h2 id="nextTitle">Next block</h2>
+              </div>
+            </div>
+            <div id="nextPiece" class="next-piece" aria-label="Next falling block"></div>
+          </section>
+
+          <section class="controls-card" aria-labelledby="controlsTitle">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Keyboard or buttons</p>
+                <h2 id="controlsTitle">Controls</h2>
+              </div>
+            </div>
+            <div class="control-grid">
+              <button class="control-button rotate-button" type="button" data-action="rotate" aria-label="Rotate block">↻</button>
+              <button class="control-button" type="button" data-action="left" aria-label="Move left">←</button>
+              <button class="control-button" type="button" data-action="down" aria-label="Drop one row">↓</button>
+              <button class="control-button" type="button" data-action="right" aria-label="Move right">→</button>
+            </div>
+            <p class="key-hint">← → move <span>·</span> ↑ rotate <span>·</span> ↓ drop</p>
+          </section>
+        </aside>
+      </section>
+
+      <footer class="how-to-play">
+        <span class="tip-icon" aria-hidden="true">✦</span>
+        <p>Blocks fall row by row. Fill a whole row to clear it and score points. Keep the stack below the top!</p>
+      </footer>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>
